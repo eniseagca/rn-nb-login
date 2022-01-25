@@ -1,17 +1,37 @@
-import React from 'react'
-import {NativeBaseProvider ,Center, Text, Button ,Input,SearchIcon,HStack,Stack,VStack,Image,Box ,Link,AspectRatio } from 'native-base'
+import React,{useState,useEffect} from 'react'
+import {View,Pressable,NativeBaseProvider ,Center, Text, Button ,Input,SearchIcon,HStack,Stack,VStack,Image,Box ,Link,FlatList } from 'native-base'
 
 const Home = (props) => {
     const {navigation} = props
+    const [selected,setSelected] =useState(0)
+    const [book,setBook] = useState([])
+    function getData(){
+        fetch('https://api.collectapi.com/news/getNews?country=tr&tag=general',{
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+              "authorization": "apikey 18Y3OfM83FFy2297uZRnDO:1yJshZKf8QLsHaA4rcYTzr"
+            }
+        }) .then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res.success)
+            setBook(res.result)
+        })
+    }
+
+    useEffect( () => {
+        getData()
+    },[] )
 
     return(
         <NativeBaseProvider>
             <Center> 
-                <HStack space={10} ml={'1'} py={'4'}>
-                    <Stack ml={'1'}><Image source={require('../icon/home-page.png')} size="8"/></Stack>
-                    <Stack><Text w="150" fontSize="24" fontWeight="bold">Hello!</Text></Stack>
-                    <Stack><Image source={require('../icon/notification.png')} size="8"/></Stack>
-                    <Stack><Image source={require('../icon/hearts.png')} size="8"/></Stack>
+                <HStack space={19} ml={'10'} py={'1'} w="100%">
+                    <Stack><Image source={require('../icon/home-page.png')} size="8" alt="home"/></Stack>
+                    <Stack><Text w="200" fontSize="24" fontWeight="bold">Hello!</Text></Stack>
+                    <Stack><Image source={require('../icon/notification.png')} size="8" alt="bildirim"/></Stack>
+                    <Stack><Image source={require('../icon/hearts.png')} size="8" alt="favori"/></Stack>
                 </HStack>
 
                 <HStack space={10}>
@@ -22,41 +42,84 @@ const Home = (props) => {
                     size={4} mr="2" color="muted.400"  /> } placeholder="Search"/>  
                     </Stack>
                     <Stack>
-                        <Image source={require('../icon/menu.png')} size="8"/>
+                        <Image source={require('../icon/menu.png')} size="8" alt="menu"/>
                     </Stack>
                 </HStack>
-               <HStack space={'180'} my='1'>
+               <HStack space={'52%'} my='1'>
                    <Stack >
-                       <Text fontSize="20">Promotion</Text>
+                       <Text fontSize="16">Promotion</Text>
                    </Stack>
                    <Stack>
-                       <Link isUnderlined="false" _text={{fontSize:'20',color:'#4053fd',fontWeight:"bold"}}>See all</Link>
+                       <Link isUnderlined="false" _text={{fontSize:'16',color:'#4053fd',fontWeight:"bold"}}>See all</Link>
                    </Stack>
                </HStack>
-                    <Box rounded={'3xl'} bg={'#4053fd'} w="370" h="150">
+                    <Box rounded={'3xl'} bg={'#4053fd'} w="90%" h="35%">
                             
                         <Center bg="violet.500" position="absolute" top="10" left="41" >
-                            <Image source={require('../img/colour.png')} size="md"/>
+                            <Image source={require('../img/colour.png')} size="md" alt="color"/>
                         </Center>
                         <Center position="absolute" right="45" top="8" w="150">
-                            <Text fontSize={'20'}>3D Design Fundamentals</Text>
-                            <Button variant="solid"  bg={"yellow.400"} rounded={'xl'} _text={{color:'gray.50'}} mt="2">Check Now!</Button>
+                            <Text fontSize={'20'} color={'white'}>3D Design Fundamentals</Text>
+                            <Button variant="solid"  bg={"yellow.400"} rounded={'xl'} _text={{color:'white'}} mt="2">Check Now!</Button>
                         </Center>
                     </Box>
-                    <HStack space={'120'} my='5'>
+                    <HStack space={'40%'} my='1'>
                    <Stack >
-                       <Text fontSize="20">Awesome Courses</Text>
+                       <Text fontSize="16">Awesome Courses</Text>
                    </Stack>
                    <Stack>
-                       <Link isUnderlined="false" _text={{fontSize:'20',color:'#4053fd',fontWeight:"bold"}}>See all</Link>
+                       <Link isUnderlined="false" _text={{fontSize:'16',color:'#4053fd',fontWeight:"bold"}}>See all</Link>
                    </Stack>
                </HStack>
-               <Button.Group  rounded={'xl'}  _focus={{colorScheme:'#4053fd'}}>
-                   <Button>All Course</Button>
-                   <Button>Popular</Button>
-                   <Button>Newest</Button>
-               </Button.Group>
+               
             </Center>
+            <Button.Group ml={'7'} size="md">
+                   <Button rounded="2xl" bg={'#4053fd'}>All Course</Button>
+                   <Button rounded="2xl" bg={'white'} borderWidth={'1'} borderColor={'#4053fd'} _text={{color:'#4053fd'}}>Popular</Button>
+                   <Button rounded="2xl" bg={'white'} borderWidth={'1'} borderColor={'#4053fd'} _text={{color:'#4053fd'}}>Newest</Button>
+               </Button.Group>
+                     {/**  <FlatList data={book}
+                            renderItem={({item,id})=>(
+                            <Box key={id}>
+                             <HStack><Image source={{uri:(item.image)}} size="md" alt="resim"/>
+                                <VStack>
+                            
+                            <Text>{item.name}</Text>
+                            <Text>{item.description}</Text>
+                            </VStack>
+                            </HStack>
+                            </Box>
+                            )}  />
+                        
+                            */  }
+                            
+                            <Box flex={1} bg="white" safeAreaTop width="100%" alignSelf="center">
+        <Center flex={1}></Center>
+               <HStack bg="white" alignItems="center" safaAreaBottom space={5} >
+                   <Pressable cursor="pointer" opacity={selected === 0 ? 1: 0.5} py="3" flex={1} onPress={()=> setSelected(0)}>
+                       <Center><Image size="8" source={require('../icon/home-page.png')} mb="1" alt="home"/>
+                       <Text color="indigo.600">Home</Text>
+                       </Center>
+                       </Pressable> 
+                       <Pressable cursor="pointer" opacity={selected === 1 ? 1: 0.5} py="3" flex={1} onPress={()=> setSelected(1)}>
+                       <Center><Image size="8" source={require('../icon/menu.png')} mb="1" alt="menu"/>
+                       <Text color="indigo.600">Option</Text>
+                       </Center>
+                       </Pressable> 
+                       <Pressable cursor="pointer" opacity={selected === 2 ? 1: 0.5} py="3" flex={1} onPress={()=> setSelected(2)}>
+                       <Center><Image size="8" source={require('../icon/mail.png')} mb="1" alt="mail"/>
+                       <Text color="indigo.600">Message</Text>
+                       </Center>
+                       </Pressable> 
+                       <Pressable cursor="pointer" opacity={selected === 3 ? 1: 0.5} py="3" flex={1} onPress={()=> setSelected(3)}>
+                       <Center><Image size="8" source={require('../icon/user.png')} mb="1" alt="user"/>
+                       <Text color="indigo.600">Profile</Text>
+                       </Center>
+                       </Pressable> 
+                        
+               </HStack>
+               </Box>
+               
         </NativeBaseProvider>
     )
 }

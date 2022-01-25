@@ -39,13 +39,13 @@ const Login = (props) => {
                         </Stack>
                     <Input onChangeText={text => setPassword(text)} variant="rounded" placeholder="Password" w={{ base: "75%", md: "25%", }} type={show ? "text" : "password"}
                         InputRightElement={
-                            <Button size="xs" w="1/6" h="full" onPress={handleClick} bg="#97a6fe" _text={{ color: "white" }} >
+                            <Button size="xs" w="1/6" h="full" onPress={handleClick} bg="#3f53fe" _text={{ color: "white" }} >
                                 {show ? "Hide" : "Show"}
                             </Button>
                         } />
                         
                     <Checkbox value="info"  accessibilityLabel='Remember me' py={'1'} size="sm" >Remember me</Checkbox>
-                    <Button bg="#97a6fe" w="300" rounded={'30'} _text={{ color: "white" }} onPress={()=> postData()} >Sign in</Button>
+                    <Button bg="#3f53fe" w="300" rounded={'30'} _text={{ color: "white" }} onPress={()=> postData()} >Sign in</Button>
                 </Stack>
              
                 <Collapse isOpen={goster}>
