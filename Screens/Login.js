@@ -41,7 +41,7 @@ const Login = (props) => {
   }
 
   return (
-    <NativeBaseProvider>
+    <Box flex="1">
       <Center flex={1} bg="white">
         <Image
           source={require('../img/sinau-logo.png')}
@@ -60,6 +60,7 @@ const Login = (props) => {
             <Input
               variant="rounded"
               placeholder="Email or Phone Number"
+              value={userName}
               w={{ base: '100%' }}
               onChangeText={(text) => setUser(text)}
             />
@@ -71,6 +72,7 @@ const Login = (props) => {
             onChangeText={(text) => setPassword(text)}
             variant="rounded"
             placeholder="Password"
+            value={password}
             w={{ base: '75%', md: '25%' }}
             type={show ? 'text' : 'password'}
             InputRightElement={
@@ -173,7 +175,7 @@ const Login = (props) => {
           Sign up
         </Link>
       </Center>
-    </NativeBaseProvider>
+    </Box>
   )
 }
 
