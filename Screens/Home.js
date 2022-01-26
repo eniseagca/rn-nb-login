@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import {
-  View,
   Pressable,
   NativeBaseProvider,
   Center,
@@ -21,7 +20,7 @@ const Home = (props) => {
   const { navigation } = props
   const [selected, setSelected] = useState(0)
   const [book, setBook] = useState([])
-  function getData () {
+  function getData() {
     fetch('https://api.collectapi.com/news/getNews?country=tr&tag=general', {
       method: 'GET',
       headers: {
@@ -43,35 +42,26 @@ const Home = (props) => {
   }, [])
 
   return (
-    <NativeBaseProvider>
+    <Box flex="1">
       <Center>
-        <HStack space={19} ml={'10'} py={'1'} w="100%">
-          <Stack>
-            <Image
-              source={require('../icon/home-page.png')}
-              size="8"
-              alt="home"
-            />
-          </Stack>
-          <Stack>
-            <Text w="200" fontSize="24" fontWeight="bold">
-              Hello!
-            </Text>
-          </Stack>
-          <Stack>
+        <HStack space={19}>
+          <Image
+            source={require('../icon/home-page.png')}
+            size="8"
+            alt="home"
+          />
+
+          <Text w="200" fontSize="24" fontWeight="bold">
+            Hello!
+          </Text>
+          <Pressable onPress={() => navigation.navigate('noti')}>
             <Image
               source={require('../icon/notification.png')}
               size="8"
               alt="bildirim"
             />
-          </Stack>
-          <Stack>
-            <Image
-              source={require('../icon/hearts.png')}
-              size="8"
-              alt="favori"
-            />
-          </Stack>
+          </Pressable>
+          <Image source={require('../icon/hearts.png')} size="8" alt="favori" />
         </HStack>
 
         <HStack space={10}>
@@ -111,7 +101,7 @@ const Home = (props) => {
               alt="color"
             />
           </Center>
-          <Center position="absolute" right="45" top="8" w="150">
+          <Center position="absolute" right="45" top="5" w="150">
             <Text fontSize={'20'} color={'white'}>
               3D Design Fundamentals
             </Text>
@@ -126,19 +116,21 @@ const Home = (props) => {
             </Button>
           </Center>
         </Box>
-        <HStack space={'40%'} my="1">
-          <Stack>
-            <Text fontSize="16">Awesome Courses</Text>
-          </Stack>
-          <Stack>
-            <Link
-              isUnderlined="false"
-              _text={{ fontSize: '16', color: '#4053fd', fontWeight: 'bold' }}
-            >
-              See all
-            </Link>
-          </Stack>
-        </HStack>
+        <Box>
+          <HStack space={'40%'} my="1">
+            <Stack>
+              <Text fontSize="16">Awesome Courses</Text>
+            </Stack>
+            <Stack>
+              <Link
+                isUnderlined="false"
+                _text={{ fontSize: '16', color: '#4053fd', fontWeight: 'bold' }}
+              >
+                See all
+              </Link>
+            </Stack>
+          </HStack>
+        </Box>
       </Center>
       <Button.Group ml={'7'} size="md">
         <Button rounded="2xl" bg={'#4053fd'}>
@@ -163,24 +155,24 @@ const Home = (props) => {
           Newest
         </Button>
       </Button.Group>
-      <FlatList
-        data={book}
-        keyExtractor={(item, index) => index}
-        renderItem={({ item, index }) => (
-          <Box key={id}>
-            <HStack>
-              <Image source={{ uri: item.image }} size="md" alt="resim" />
-              <VStack>
-                <Text>{item.name}</Text>
-                <Text>{item.description}</Text>
-              </VStack>
-            </HStack>
-          </Box>
-        )}
-      />
-
+      <Box mx={'5'}>
+        <FlatList
+          data={book}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item, index }) => (
+            <Box key={index}>
+              <HStack space={3} justifyContent={'space-between'}>
+                <Image source={{ uri: item.image }} size="48" alt="resim" />
+                <VStack>
+                  <Text>{item.name}</Text>
+                  <Text>{item.description}</Text>
+                </VStack>
+              </HStack>
+            </Box>
+          )}
+        />
+      </Box>
       <Box flex={1} bg="white" safeAreaTop width="100%" alignSelf="center">
-        <Center flex={1} />
         <HStack bg="white" alignItems="center" safaAreaBottom space={5}>
           <Pressable
             cursor="pointer"
@@ -252,7 +244,7 @@ const Home = (props) => {
           </Pressable>
         </HStack>
       </Box>
-    </NativeBaseProvider>
+    </Box>
   )
 }
 
