@@ -7,7 +7,9 @@ import {
   Input,
   Link,
   SearchIcon,
-  Button
+  Button,
+  VStack,
+  Pressable
 } from 'native-base'
 
 const Home = (props) => {
@@ -36,10 +38,15 @@ const Home = (props) => {
   }, [])
 
   return (
-    <Box>
+    <Box flex={1}>
       <HStack justifyContent={'space-around'} my="4">
         <HStack>
-          <Image source={require('../icon/home-page.png')} size="8" mr="5" />
+          <Image
+            source={require('../icon/home-page.png')}
+            size="8"
+            mr="5"
+            alt="home"
+          />
           <Text fontSize="24" fontWeight="bold">
             Hello, Daniel!
           </Text>
@@ -62,7 +69,7 @@ const Home = (props) => {
           borderRadius={'20'}
           InputRightElement={<SearchIcon size={4} mr="2" color="muted.400" />}
         />
-        <Image source={require('../icon/menu.png')} size="8" />
+        <Image source={require('../icon/menu.png')} size="8" alt="menu" />
       </HStack>
       <HStack justifyContent={'space-between'} mx="5" my="3">
         <Text fontSize="18">Promotion</Text>
@@ -70,15 +77,18 @@ const Home = (props) => {
           See all
         </Link>
       </HStack>
-      <Image
-        mx="4"
-        source={require('../img/banner.png')}
-        borderRadius={'20'}
-        w="92%"
-        h="40%"
-        alt="banner"
-      />
-      <HStack justifyContent={'space-between'} mx="5" my="3">
+      <Pressable onPress={() => navigation.navigate('login')}>
+        <Box mx="4" h="160">
+          <Image
+            source={require('../img/banner.png')}
+            borderRadius={'20'}
+            w="100%"
+            h="100%"
+            alt="banner"
+          />
+        </Box>
+      </Pressable>
+      <HStack justifyContent={'space-between'} mx="5">
         <Text fontSize="18">All courses</Text>
         <Link fontSize="18" href="see.com">
           See all
@@ -105,6 +115,61 @@ const Home = (props) => {
           <Text color={'#4a56fe'}>Newest</Text>
         </Button>
       </HStack>
+      <Box>
+        <Box
+          w="80%"
+          h="56%"
+          ml="10"
+          bgColor={'blue.200'}
+          safeAreaTop
+          mt={'1'}
+        ></Box>
+
+        <Box h="8" mx="5" safeAreaBottom>
+          <HStack justifyContent={'space-around'}>
+            <Pressable onPress={() => navigation.navigate('home')}>
+              <Box w="8" h="8">
+                <Image
+                  w="100%"
+                  h="100%"
+                  source={require('../icon/home-page.png')}
+                  alt="home"
+                />
+              </Box>
+            </Pressable>
+            <Pressable>
+              <Box w="8" h="8">
+                <Image
+                  w="100%"
+                  h="100%"
+                  source={require('../icon/menu.png')}
+                  alt="menu"
+                />
+              </Box>
+            </Pressable>
+            <Pressable>
+              <Box w="8" h="8">
+                <Image
+                  w="100%"
+                  h="100%"
+                  source={require('../icon/mail.png')}
+                  alt="mail"
+                />
+              </Box>
+            </Pressable>
+            <Pressable>
+              <Box w="8" h="8">
+                <Image
+                  w="100%"
+                  h="100%"
+                  source={require('../icon/user.png')}
+                  alt="profile"
+                />
+              </Box>
+            </Pressable>
+          </HStack>
+        </Box>
+      </Box>
     </Box>
   )
 }

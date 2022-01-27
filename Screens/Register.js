@@ -1,35 +1,33 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
-  Box,
-  Text,
   Input,
-  Button,
-  Image,
-  Checkbox,
-  Link,
+  Text,
+  Box,
   HStack,
-  VStack
+  Image,
+  VStack,
+  Button,
+  Link,
+  Checkbox
 } from 'native-base'
-
-const Login = (props) => {
+const Register = (props) => {
   const { navigation } = props
-  const [userName, setUser] = useState('')
-  const [password, setPassword] = useState('')
-
   return (
     <Box flex={1} justifyContent={'center'} bgColor={'white'}>
       <VStack p="6" mx="2" my="2">
-        <VStack ml="20">
-          <Image
-            alt="logo"
-            source={require('../img/sinau-logo.png')}
-            w="200"
-            h="200"
-          />
-          <Text fontSize={'20'} fontWeight="bold">
-            Sign in to your account
-          </Text>
-        </VStack>
+        <Box alignItems={'center'}>
+          <VStack>
+            <Image
+              alt="logo"
+              source={require('../img/sinau-logo.png')}
+              w="200"
+              h="200"
+            />
+            <Text fontSize={'20'} fontWeight="bold" pl="8">
+              Sign up for free
+            </Text>
+          </VStack>
+        </Box>
         <VStack>
           <Text ml="3" color="gray.500" fontWeight="bold">
             Email*
@@ -40,7 +38,6 @@ const Login = (props) => {
             mt={'2'}
             borderColor={'#4a56fe'}
             borderRadius={20}
-            onChangeText={(text) => setUser(text)}
           />
         </VStack>
         <VStack mt="4">
@@ -53,7 +50,6 @@ const Login = (props) => {
             mt={'2'}
             borderColor={'#4a56fe'}
             borderRadius={20}
-            onChangeText={(text) => setPassword(text)}
           />
         </VStack>
         <VStack>
@@ -62,14 +58,13 @@ const Login = (props) => {
           </Checkbox>
 
           <Button
-            disabled={password.length === 0 || userName.length === 0}
             borderRadius="20"
             py={'2'}
             my={'4'}
             bgColor={'#4a56fe'}
-            onPress={() => navigation.navigate('home')}
+            onPress={() => navigation.navigate('cong')}
           >
-            Sign in
+            Sign up
           </Button>
         </VStack>
 
@@ -82,12 +77,11 @@ const Login = (props) => {
           <Image source={require('../img/g.png')} size="8" alt="google" />
         </HStack>
         <HStack justifyContent={'center'}>
-          <Text color="gray.500">Don't have an account? </Text>
-          <Link onPress={() => navigation.navigate('regi')}>Sign up</Link>
+          <Text color="gray.500">Already have an account? </Text>
+          <Link onPress={() => navigation.navigate('logi')}>Sign in</Link>
         </HStack>
       </VStack>
     </Box>
   )
 }
-
-export default Login
+export default Register
