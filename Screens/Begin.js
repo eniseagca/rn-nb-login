@@ -1,38 +1,44 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
-import { Button, VStack, Center, Image, Text } from 'native-base'
+import { Button, VStack, Box, Image, Text } from 'native-base'
 
 const Begin = (props) => {
   const { navigation } = props
   return (
-    <Center flex={1} bg="white">
-      <VStack space={'8'}>
+    <Box
+      bgcolor={'black'}
+      flex={1}
+      justifyContent={'space-around'}
+      alignItems={'center'}
+    >
+      <VStack p={'8'}>
         <Image
-          mt="16"
           source={require('../img/sinau-logo.png')}
           w="300"
           h="300"
-          alt="sinau"
+          alt="logo"
+          mb={'5'}
         />
         <Text
-          mt="8"
           fontWeight="semibold"
           color={'gray.600'}
-          ml="7"
           fontSize="sm"
+          py="20"
+          ml="5"
         >
           The best online course of this century.
         </Text>
 
         <Button
           bg="#4a56fe"
-          rounded={'30'}
-          mt="16"
+          borderRadius={'20'}
           onPress={() => navigation.navigate('login')}
+          mt={'2'}
         >
           Next
         </Button>
       </VStack>
-    </Center>
+    </Box>
   )
 }
 export default Begin

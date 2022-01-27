@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Pressable,
-  NativeBaseProvider,
-  Center,
-  Text,
-  Button,
-  Input,
-  SearchIcon,
-  HStack,
-  Stack,
-  VStack,
-  Image,
   Box,
+  HStack,
+  Text,
+  Image,
+  Input,
   Link,
-  FlatList
+  SearchIcon,
+  Button
 } from 'native-base'
 
 const Home = (props) => {
@@ -42,208 +36,75 @@ const Home = (props) => {
   }, [])
 
   return (
-    <Box flex="1">
-      <Center>
-        <HStack space={19}>
-          <Image
-            source={require('../icon/home-page.png')}
-            size="8"
-            alt="home"
-          />
-
-          <Text w="200" fontSize="24" fontWeight="bold">
-            Hello!
+    <Box>
+      <HStack justifyContent={'space-around'} my="4">
+        <HStack>
+          <Image source={require('../icon/home-page.png')} size="8" mr="5" />
+          <Text fontSize="24" fontWeight="bold">
+            Hello, Daniel!
           </Text>
-          <Pressable onPress={() => navigation.navigate('noti')}>
-            <Image
-              source={require('../icon/notification.png')}
-              size="8"
-              alt="bildirim"
-            />
-          </Pressable>
+        </HStack>
+        <HStack>
+          <Image
+            source={require('../icon/notification.png')}
+            size="8"
+            mr="5"
+            alt="noti"
+          />
           <Image source={require('../icon/hearts.png')} size="8" alt="favori" />
         </HStack>
-
-        <HStack space={10}>
-          <Stack>
-            <Input
-              borderColor={'blue.500'}
-              w={'300'}
-              variant="rounded"
-              InputRightElement={
-                <SearchIcon size={4} mr="2" color="muted.400" />
-              }
-              placeholder="Search"
-            />
-          </Stack>
-          <Stack>
-            <Image source={require('../icon/menu.png')} size="8" alt="menu" />
-          </Stack>
-        </HStack>
-        <HStack space={'52%'} my="1">
-          <Stack>
-            <Text fontSize="16">Promotion</Text>
-          </Stack>
-          <Stack>
-            <Link
-              isUnderlined="false"
-              _text={{ fontSize: '16', color: '#4053fd', fontWeight: 'bold' }}
-            >
-              See all
-            </Link>
-          </Stack>
-        </HStack>
-        <Box rounded={'3xl'} bg={'#4053fd'} w="90%" h="35%">
-          <Center bg="violet.500" position="absolute" top="10" left="41">
-            <Image
-              source={require('../img/colour.png')}
-              size="md"
-              alt="color"
-            />
-          </Center>
-          <Center position="absolute" right="45" top="5" w="150">
-            <Text fontSize={'20'} color={'white'}>
-              3D Design Fundamentals
-            </Text>
-            <Button
-              variant="solid"
-              bg={'yellow.400'}
-              rounded={'xl'}
-              _text={{ color: 'white' }}
-              mt="2"
-            >
-              Check Now!
-            </Button>
-          </Center>
-        </Box>
-        <Box>
-          <HStack space={'40%'} my="1">
-            <Stack>
-              <Text fontSize="16">Awesome Courses</Text>
-            </Stack>
-            <Stack>
-              <Link
-                isUnderlined="false"
-                _text={{ fontSize: '16', color: '#4053fd', fontWeight: 'bold' }}
-              >
-                See all
-              </Link>
-            </Stack>
-          </HStack>
-        </Box>
-      </Center>
-      <Button.Group ml={'7'} size="md">
-        <Button rounded="2xl" bg={'#4053fd'}>
+      </HStack>
+      <HStack ml="5">
+        <Input
+          placeholder="Search"
+          pl="2"
+          w={{ base: '87%' }}
+          borderRadius={'20'}
+          InputRightElement={<SearchIcon size={4} mr="2" color="muted.400" />}
+        />
+        <Image source={require('../icon/menu.png')} size="8" />
+      </HStack>
+      <HStack justifyContent={'space-between'} mx="5" my="3">
+        <Text fontSize="18">Promotion</Text>
+        <Link href="see.com" fontSize="18">
+          See all
+        </Link>
+      </HStack>
+      <Image
+        mx="4"
+        source={require('../img/banner.png')}
+        borderRadius={'20'}
+        w="92%"
+        h="40%"
+        alt="banner"
+      />
+      <HStack justifyContent={'space-between'} mx="5" my="3">
+        <Text fontSize="18">All courses</Text>
+        <Link fontSize="18" href="see.com">
+          See all
+        </Link>
+      </HStack>
+      <HStack ml="5" space={'3'}>
+        <Button bgColor={'#4a56fe'} borderRadius={'20'}>
           All Course
         </Button>
         <Button
-          rounded="2xl"
-          bg={'white'}
-          borderWidth={'1'}
-          borderColor={'#4053fd'}
-          _text={{ color: '#4053fd' }}
+          bgColor={'#eee'}
+          borderRadius={'20'}
+          borderWidth={'2'}
+          borderColor="#4a56fe"
         >
-          Popular
+          <Text color={'#4a56fe'}>Popular</Text>
         </Button>
         <Button
-          rounded="2xl"
-          bg={'white'}
-          borderWidth={'1'}
-          borderColor={'#4053fd'}
-          _text={{ color: '#4053fd' }}
+          bgColor={'#eee'}
+          borderRadius={'20'}
+          borderWidth={'2'}
+          borderColor="#4a56fe"
         >
-          Newest
+          <Text color={'#4a56fe'}>Newest</Text>
         </Button>
-      </Button.Group>
-      <Box mx={'5'}>
-        <FlatList
-          data={book}
-          keyExtractor={(item, index) => index}
-          renderItem={({ item, index }) => (
-            <Box key={index}>
-              <HStack space={3} justifyContent={'space-between'}>
-                <Image source={{ uri: item.image }} size="48" alt="resim" />
-                <VStack>
-                  <Text>{item.name}</Text>
-                  <Text>{item.description}</Text>
-                </VStack>
-              </HStack>
-            </Box>
-          )}
-        />
-      </Box>
-      <Box flex={1} bg="white" safeAreaTop width="100%" alignSelf="center">
-        <HStack bg="white" alignItems="center" safaAreaBottom space={5}>
-          <Pressable
-            cursor="pointer"
-            opacity={selected === 0 ? 1 : 0.5}
-            py="3"
-            flex={1}
-            onPress={() => setSelected(0)}
-          >
-            <Center>
-              <Image
-                size="8"
-                source={require('../icon/home-page.png')}
-                mb="1"
-                alt="home"
-              />
-              <Text color="indigo.600">Home</Text>
-            </Center>
-          </Pressable>
-          <Pressable
-            cursor="pointer"
-            opacity={selected === 1 ? 1 : 0.5}
-            py="3"
-            flex={1}
-            onPress={() => setSelected(1)}
-          >
-            <Center>
-              <Image
-                size="8"
-                source={require('../icon/menu.png')}
-                mb="1"
-                alt="menu"
-              />
-              <Text color="indigo.600">Option</Text>
-            </Center>
-          </Pressable>
-          <Pressable
-            cursor="pointer"
-            opacity={selected === 2 ? 1 : 0.5}
-            py="3"
-            flex={1}
-            onPress={() => setSelected(2)}
-          >
-            <Center>
-              <Image
-                size="8"
-                source={require('../icon/mail.png')}
-                mb="1"
-                alt="mail"
-              />
-              <Text color="indigo.600">Message</Text>
-            </Center>
-          </Pressable>
-          <Pressable
-            cursor="pointer"
-            opacity={selected === 3 ? 1 : 0.5}
-            py="3"
-            flex={1}
-            onPress={() => setSelected(3)}
-          >
-            <Center>
-              <Image
-                size="8"
-                source={require('../icon/user.png')}
-                mb="1"
-                alt="user"
-              />
-              <Text color="indigo.600">Profile</Text>
-            </Center>
-          </Pressable>
-        </HStack>
-      </Box>
+      </HStack>
     </Box>
   )
 }

@@ -1,21 +1,14 @@
 import React, { useState } from 'react'
 import {
-  Collapse,
   Box,
-  Alert,
   Text,
   Input,
-  NativeBaseProvider,
-  Center,
   Button,
   Image,
   Checkbox,
   Link,
   HStack,
-  Stack,
-  VStack,
-  IconButton,
-  CloseIcon
+  VStack
 } from 'native-base'
 
 const Login = (props) => {
@@ -41,140 +34,75 @@ const Login = (props) => {
   }
 
   return (
-    <Box flex="1">
-      <Center flex={1} bg="white">
-        <Image
-          source={require('../img/sinau-logo.png')}
-          w="200"
-          h="200"
-          alt="logo"
-        />
-        <Text fontSize="2xl" fontWeight="bold" color="gray.700">
-          Sign in to your account
-        </Text>
-        <Stack space={2}>
-          <Stack space={1}>
-            <Text pt={'3'} pl={'2'} color="gray.400" fontWeight={'bold'}>
-              Email<Text color="red.500">*</Text>
-            </Text>
-            <Input
-              variant="rounded"
-              placeholder="Email or Phone Number"
-              value={userName}
-              w={{ base: '100%' }}
-              onChangeText={(text) => setUser(text)}
-            />
-            <Text pt={'3'} pl={'2'} color="gray.400" fontWeight={'bold'}>
-              Password<Text color="red.500">*</Text>
-            </Text>
-          </Stack>
-          <Input
-            onChangeText={(text) => setPassword(text)}
-            variant="rounded"
-            placeholder="Password"
-            value={password}
-            w={{ base: '75%', md: '25%' }}
-            type={show ? 'text' : 'password'}
-            InputRightElement={
-              <Button
-                size="xs"
-                w="1/6"
-                h="full"
-                onPress={handleClick}
-                bg="#3f53fe"
-                _text={{ color: 'white' }}
-              >
-                {show ? 'Hide' : 'Show'}
-              </Button>
-            }
+    <Box flex={1} justifyContent={'center'} bgColor={'white'}>
+      <VStack p="6" mx="2" my="2">
+        <VStack ml="20">
+          <Image
+            alt="logo"
+            source={require('../img/sinau-logo.png')}
+            w="200"
+            h="200"
           />
-
-          <Checkbox
-            value="info"
-            accessibilityLabel="Remember me"
-            py={'1'}
-            size="sm"
-          >
-            Remember me
+          <Text fontSize={'20'} fontWeight="bold">
+            Sign in to your account
+          </Text>
+        </VStack>
+        <VStack>
+          <Text ml="3" color="gray.500" fontWeight="bold">
+            Email*
+          </Text>
+          <Input
+            placeholder="username"
+            pl={'4'}
+            mt={'2'}
+            borderColor={'#4a56fe'}
+            borderRadius={20}
+            onChangeText={(text) => setUser(text)}
+          />
+        </VStack>
+        <VStack mt="4">
+          <Text ml="3" color="gray.500" fontWeight="bold">
+            Password*
+          </Text>
+          <Input
+            placeholder="password"
+            pl={'4'}
+            mt={'2'}
+            borderColor={'#4a56fe'}
+            borderRadius={20}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </VStack>
+        <VStack>
+          <Checkbox mt={'2'}>
+            <Text>Remember me</Text>
           </Checkbox>
+
           <Button
-            bg="#3f53fe"
-            w="300"
-            rounded={'30'}
-            _text={{ color: 'white' }}
-            onPress={() => postData()}
+            disabled={password.length === 0 || userName.length === 0}
+            borderRadius="20"
+            py={'2'}
+            my={'4'}
+            bgColor={'#4a56fe'}
+            onPress={() => navigation.navigate('home')}
           >
             Sign in
           </Button>
-        </Stack>
-        <Collapse isOpen={goster}>
-          <Alert w="100%" status="error">
-            <VStack space={1} flexShrink={1} w="100%">
-              <HStack
-                flexShrink={1}
-                space={2}
-                alignItems="center"
-                justifyContent="space-between"
-              >
-                <HStack flexShrink={1} space={2} alignItems="center">
-                  <Alert.Icon />
-                  <Text
-                    fontSize="md"
-                    fontWeight="medium"
-                    _dark={{
-                      color: 'coolGray.800'
-                    }}
-                  >
-                    Wrong!
-                  </Text>
-                </HStack>
-                <IconButton
-                  variant="unstyled"
-                  icon={<CloseIcon size="3" color="coolGray.600" />}
-                  onPress={() => setGoster(false)}
-                />
-              </HStack>
-              <Box
-                pl="6"
-                _dark={{
-                  _text: {
-                    color: 'coolGray.600'
-                  }
-                }}
-              >
-                Wrong username or password!Please try again!
-              </Box>
-            </VStack>
-          </Alert>
-        </Collapse>
-        <Link
-          href="password.com"
-          mt={4}
-          _text={{ color: '#415dfe', fontWeight: 'medium' }}
-          isUnderlined="false"
-        >
-          Forgot the password?
-        </Link>
-        <Text pb="3">or continue with</Text>
-        <Stack space={5}>
-          <HStack space={20}>
-            <Link href="facebook.com">
-              <Image source={require('../img/f.png')} size="xs" alt="face" />
-            </Link>
-            <Link href="google.com">
-              <Image source={require('../img/g.png')} size="xs" alt="google" />
-            </Link>
-          </HStack>
-        </Stack>
-        <Text>Don't have an account </Text>{' '}
-        <Link
-          href="signup.com"
-          _text={{ color: '#415dfe' }}
-          isUnderlined="false"
-        >
-          Sign up
-        </Link>
-      </Center>
+        </VStack>
+
+        <VStack alignItems={'center'} space={'5'}>
+          <Text color="#4a56fe">Forgot the Password?</Text>
+          <Text>or continue with</Text>
+        </VStack>
+        <HStack justifyContent={'space-around'} py="3">
+          <Image source={require('../img/f.png')} size="8" alt="face" />
+          <Image source={require('../img/g.png')} size="8" alt="google" />
+        </HStack>
+        <HStack justifyContent={'center'}>
+          <Text color="gray.500">Don't have an account? </Text>
+          <Link href="signup.com">Sign up</Link>
+        </HStack>
+      </VStack>
     </Box>
   )
 }
