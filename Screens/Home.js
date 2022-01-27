@@ -8,34 +8,11 @@ import {
   Link,
   SearchIcon,
   Button,
-  VStack,
   Pressable
 } from 'native-base'
 
 const Home = (props) => {
   const { navigation } = props
-  const [selected, setSelected] = useState(0)
-  const [book, setBook] = useState([])
-  function getData() {
-    fetch('https://api.collectapi.com/news/getNews?country=tr&tag=general', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        authorization: 'apikey 18Y3OfM83FFy2297uZRnDO:1yJshZKf8QLsHaA4rcYTzr'
-      }
-    })
-      .then((res) => {
-        return res.json()
-      })
-      .then((res) => {
-        console.log(res.success)
-        setBook(res.result)
-      })
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
 
   return (
     <Box flex={1}>
@@ -52,12 +29,14 @@ const Home = (props) => {
           </Text>
         </HStack>
         <HStack>
-          <Image
-            source={require('../icon/notification.png')}
-            size="8"
-            mr="5"
-            alt="noti"
-          />
+          <Pressable onPress={() => navigation.navigate('noti')}>
+            <Image
+              source={require('../icon/notification.png')}
+              size="8"
+              mr="5"
+              alt="noti"
+            />
+          </Pressable>
           <Image source={require('../icon/hearts.png')} size="8" alt="favori" />
         </HStack>
       </HStack>

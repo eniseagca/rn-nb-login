@@ -11,23 +11,17 @@ const Congra = (props) => {
       alignItems={'center'}
     >
       <VStack p={'8'}>
-        <Box>
+        <Box alignItems={'center'}>
           <Image
             source={require('../img/sinau-logo.png')}
             w="300"
             h="300"
             alt="logo"
           />
-          <Text fontWeight={'bold'} color={'#4a56fe'} fontSize={'36'} pl="20">
+          <Text fontWeight={'bold'} color={'#4a56fe'} fontSize={'36'}>
             Congrats!
           </Text>
-          <Text
-            fontWeight="semibold"
-            fontSize={'16'}
-            color={'gray.600'}
-            mt="5"
-            ml="50"
-          >
+          <Text fontWeight="semibold" fontSize={'16'} color={'gray.600'} mt="5">
             Your profile ready to use.
           </Text>
         </Box>
