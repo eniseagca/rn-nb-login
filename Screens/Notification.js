@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../Components/Footer'
 import {
   Text,
   Box,
@@ -51,8 +52,8 @@ const Notification = (props) => {
   ]
 
   return (
-    <Box>
-      <Box w="100%" h="20" bgColor={'white'} pt="3" ml="1" safeAreaTop>
+    <Box flex={1} bgColor={'white'}>
+      <Box w="100%" h="100" my="7" ml="1" safeAreaTop>
         <HStack>
           <Pressable onPress={() => navigation.navigate('home')}>
             <Image
@@ -69,7 +70,7 @@ const Notification = (props) => {
           </Text>
         </HStack>
       </Box>
-      <Box w="100%">
+      <Box w="100%" h="600">
         <FlatList
           data={data}
           keyExtractor={(item) => item.id}
@@ -79,7 +80,7 @@ const Notification = (props) => {
                 <Image source={item.image} w="70" h="70" alt="notif"></Image>
                 <Spacer />
                 <Box w="290" h="90">
-                  <VStack>
+                  <VStack ml="2">
                     <Text fontSize="16" fontWeight={'semibold'}>
                       {item.desc}
                     </Text>
@@ -91,50 +92,7 @@ const Notification = (props) => {
           )}
         />
       </Box>
-      <Box h="12" mx="5" mt="130">
-        <HStack justifyContent={'space-around'}>
-          <Pressable onPress={() => navigation.navigate('home')}>
-            <Box w="20" h="9">
-              <Image
-                w="100%"
-                h="100%"
-                source={require('../icon/home.png')}
-                alt="home"
-              />
-            </Box>
-          </Pressable>
-          <Pressable>
-            <Box w="9" h="9">
-              <Image
-                w="100%"
-                h="100%"
-                source={require('../icon/menu.png')}
-                alt="menu"
-              />
-            </Box>
-          </Pressable>
-          <Pressable>
-            <Box w="9" h="9">
-              <Image
-                w="100%"
-                h="100%"
-                source={require('../icon/message.png')}
-                alt="mail"
-              />
-            </Box>
-          </Pressable>
-          <Pressable>
-            <Box w="9" h="9">
-              <Image
-                w="100%"
-                h="100%"
-                source={require('../icon/profile.png')}
-                alt="profile"
-              />
-            </Box>
-          </Pressable>
-        </HStack>
-      </Box>
+      <Footer />
     </Box>
   )
 }

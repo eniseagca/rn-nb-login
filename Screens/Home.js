@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../Components/Footer'
 import {
   Box,
   HStack,
@@ -47,13 +48,14 @@ const Home = (props) => {
   ]
   return (
     <Box flex={1}>
-      <HStack justifyContent={'space-around'} my="4">
+      <HStack justifyContent={'space-around'} mt="12" mb="5">
         <HStack>
           <Image
-            source={require('../icon/home-page.png')}
-            size="8"
+            source={require('../icon/logo.png')}
+            size="9"
             mr="5"
             alt="home"
+            borderRadius={'10'}
           />
           <Text fontSize="24" fontWeight="bold">
             Hello, Daniel!
@@ -62,13 +64,14 @@ const Home = (props) => {
         <HStack>
           <Pressable onPress={() => navigation.navigate('noti')}>
             <Image
-              source={require('../icon/notification.png')}
-              size="8"
+              borderRadius={'10'}
+              source={require('../icon/noti.png')}
+              size="9"
               mr="5"
               alt="noti"
             />
           </Pressable>
-          <Image source={require('../icon/hearts.png')} size="8" alt="favori" />
+          <Image borderRadius={'10'} source={require('../icon/fav.png')} size="9" alt="favori" />
         </HStack>
       </HStack>
       <HStack ml="5">
@@ -81,14 +84,14 @@ const Home = (props) => {
         />
         <Image source={require('../icon/menu.png')} size="8" alt="menu" />
       </HStack>
-      <HStack justifyContent={'space-between'} mx="5" my="3">
+      <HStack justifyContent={'space-between'} mx="5" mt="3">
         <Text fontSize="18">Promotion</Text>
         <Link href="see.com" fontSize="18">
           See all
         </Link>
       </HStack>
       <Pressable onPress={() => navigation.navigate('login')}>
-        <Box mx="4" h="160">
+        <Box mx="4" h="200" py="5">
           <Image
             source={require('../img/banner.png')}
             borderRadius={'20'}
@@ -126,7 +129,7 @@ const Home = (props) => {
         </Button>
       </HStack>
       <Box>
-        <Box w="80%" h="54%" ml="10" safeAreaTop mt={'1'}>
+        <Box w="80%" h="300" ml="10" safeAreaTop mt={'1'}>
           <FlatList
             data={data}
             keyExtractor={(item) => item.id}
@@ -157,50 +160,7 @@ const Home = (props) => {
           />
         </Box>
 
-        <Box h="12" mx="5" safeAreaBottom>
-          <HStack justifyContent={'space-around'}>
-            <Pressable onPress={() => navigation.navigate('home')}>
-              <Box w="20" h="9">
-                <Image
-                  w="100%"
-                  h="100%"
-                  source={require('../icon/home.png')}
-                  alt="home"
-                />
-              </Box>
-            </Pressable>
-            <Pressable>
-              <Box w="9" h="9">
-                <Image
-                  w="100%"
-                  h="100%"
-                  source={require('../icon/menu.png')}
-                  alt="menu"
-                />
-              </Box>
-            </Pressable>
-            <Pressable>
-              <Box w="9" h="9">
-                <Image
-                  w="100%"
-                  h="100%"
-                  source={require('../icon/message.png')}
-                  alt="mail"
-                />
-              </Box>
-            </Pressable>
-            <Pressable>
-              <Box w="9" h="9">
-                <Image
-                  w="100%"
-                  h="100%"
-                  source={require('../icon/profile.png')}
-                  alt="profile"
-                />
-              </Box>
-            </Pressable>
-          </HStack>
-        </Box>
+        <Footer />
       </Box>
     </Box>
   )
