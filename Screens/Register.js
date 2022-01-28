@@ -78,7 +78,7 @@ const Register = (props) => {
         </HStack>
         <HStack justifyContent={'center'}>
           <Text color="gray.500">Already have an account? </Text>
-          <Link onPress={() => navigation.navigate('logi')}>Sign in</Link>
+          <Link onPress={() => navigation.navigate('login')}>Sign in</Link>
         </HStack>
       </VStack>
     </Box>
