@@ -47,7 +47,7 @@ const Home = (props) => {
     }
   ]
   return (
-    <Box flex={1}>
+    <Box flex={1} bgColor={'#fff'}>
       <HStack justifyContent={'space-around'} mt="12" mb="5">
         <HStack>
           <Image
@@ -86,7 +86,7 @@ const Home = (props) => {
       </HStack>
       <HStack justifyContent={'space-between'} mx="5" mt="3">
         <Text fontSize="18">Promotion</Text>
-        <Link href="see.com" fontSize="18">
+        <Link onPress={() => navigation.navigate('promotion')} fontSize="18">
           See all
         </Link>
       </HStack>

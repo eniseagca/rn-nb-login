@@ -6,7 +6,7 @@ import Login from './Screens/Login'
 import Home from './Screens/Home'
 import Register from './Screens/Register'
 import Congra from './Screens/Congra'
-import Users from './Screens/Users'
+import Promotion from './Screens/Promotion'
 import Notification from './Screens/Notification'
 import { NativeBaseProvider } from 'native-base'
 
@@ -23,7 +23,7 @@ const App = () => {
           <Stack.Screen name="cong" component={Congra} />
           <Stack.Screen name="home" component={Home} />
           <Stack.Screen name="noti" component={Notification} />
-          <Stack.Screen name="users" component={Users} />
+          <Stack.Screen name="promotion" component={Promotion} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
