@@ -55,7 +55,7 @@ const Notification = (props) => {
     <Box flex={1} bgColor={'white'}>
       <Box w="100%" h="100" my="7" ml="1" safeAreaTop>
         <HStack>
-          <Pressable onPress={() => navigation.navigate('home')}>
+          <Pressable onPress={() => navigation.goBack()}>
             <Image
               ml="5"
               source={require('../icon/back-button.png')}

@@ -8,6 +8,7 @@ import Register from './Screens/Register'
 import Congra from './Screens/Congra'
 import Promotion from './Screens/Promotion'
 import Notification from './Screens/Notification'
+import Awesome from './Screens/Awesome'
 import { NativeBaseProvider } from 'native-base'
 
 const Stack = createNativeStackNavigator()
@@ -24,6 +25,7 @@ const App = () => {
           <Stack.Screen name="home" component={Home} />
           <Stack.Screen name="noti" component={Notification} />
           <Stack.Screen name="promotion" component={Promotion} />
+          <Stack.Screen name="awesome" component={Awesome} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

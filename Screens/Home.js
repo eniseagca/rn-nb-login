@@ -103,7 +103,7 @@ const Home = (props) => {
       </Pressable>
       <HStack justifyContent={'space-between'} mx="5" mb="2">
         <Text fontSize="18">Awesome courses</Text>
-        <Link fontSize="18" href="see.com">
+        <Link fontSize="18" onPress={() => navigation.navigate('awesome')}>
           See all
         </Link>
       </HStack>

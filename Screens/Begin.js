@@ -6,7 +6,7 @@ const Begin = (props) => {
   const { navigation } = props
   return (
     <Box
-      bgcolor={'black'}
+      bgcolor={'#fff'}
       flex={1}
       justifyContent={'space-around'}
       alignItems={'center'}
