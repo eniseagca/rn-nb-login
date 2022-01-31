@@ -10,16 +10,33 @@ import {
   HStack,
   VStack
 } from 'native-base'
-
+import User from '../json/User.json'
 const Login = (props) => {
   const { navigation } = props
   const [userName, setUser] = useState('')
   const [password, setPassword] = useState('')
+  function loginControl(user, pass) {
+    for (i = 0; i < User.kullanici.length; i++) {
+      if (User.kullanici[i].userName === user && User.kullanici[i].password === pass) {
+
+        console.log("kullanici adi ve parola dogru")
+        { navigation.navigate('home') }
+        break
+      }
+      else {
+        console.warn("kullanici adi veya parola yanlis")
+
+      }
+
+    }
+
+  }
 
   return (
-    <Box flex={1} justifyContent={'center'} bgColor={'white'}>
+    <Box flex={1} justifyContent={'center'} bgColor={'#fff'}>
       <VStack p="6" mx="2" my="2">
-        <VStack ml="20">
+
+        <VStack alignItems={'center'}>
           <Image
             alt="logo"
             source={require('../img/sinau-logo.png')}
@@ -67,7 +84,7 @@ const Login = (props) => {
             py={'2'}
             my={'4'}
             bgColor={'#4a56fe'}
-            onPress={() => navigation.navigate('home')}
+            onPress={() => loginControl(userName, password)}
           >
             Sign in
           </Button>

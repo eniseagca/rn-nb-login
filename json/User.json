@@ -1,0 +1,19 @@
+{
+    "kullanici": [
+        {
+            "id": 1,
+            "userName": "admin",
+            "password": "admin"
+        },
+        {
+            "id": 2,
+            "userName": "enise",
+            "password": "1234"
+        },
+        {
+            "id": 3,
+            "userName": "Deneme",
+            "password": "Deneme"
+        }
+    ]
+}
