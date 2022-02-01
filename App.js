@@ -10,6 +10,7 @@ import Promotion from './Screens/Promotion'
 import Notification from './Screens/Notification'
 import Awesome from './Screens/Awesome'
 import { NativeBaseProvider } from 'native-base'
+import CourseDetail from './Screens/Course-detail'
 
 const Stack = createNativeStackNavigator()
 
@@ -26,6 +27,7 @@ const App = () => {
           <Stack.Screen name="noti" component={Notification} />
           <Stack.Screen name="promotion" component={Promotion} />
           <Stack.Screen name="awesome" component={Awesome} />
+          <Stack.Screen name="coursedetail" component={CourseDetail} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

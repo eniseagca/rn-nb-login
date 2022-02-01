@@ -82,7 +82,9 @@ const Home = (props) => {
           borderRadius={'20'}
           InputRightElement={<SearchIcon size={4} mr="2" color="muted.400" />}
         />
-        <Image source={require('../icon/menu.png')} size="8" alt="menu" />
+        <Pressable>
+          <Image source={require('../icon/menu.png')} size="8" alt="menu" />
+        </Pressable>
       </HStack>
       <HStack justifyContent={'space-between'} mx="5" mt="3">
         <Text fontSize="18">Promotion</Text>
