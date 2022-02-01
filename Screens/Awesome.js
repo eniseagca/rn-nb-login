@@ -19,47 +19,56 @@ const Awesome = (props) => {
         {
             "id": "1",
             "image": require('../img/noti3.png'),
-            "desc": "3D Design Basic",
+            "course": "3D Design Basic",
             "star": "4",
             "isFav": false,
             "lesson": "24 lessons",
-            "price": "$24,99"
+            "price": "$24,99",
+            "desc": "In this course you will learn how to build a space to a 3-dimensional product.There are 24 premium learning videos for you."
         },
         {
             "id": "2",
             "image": require('../img/noti4.png'),
-            "desc": "Characters Animation",
+            "course": "Characters Animation",
             "star": "4.8",
             "isFav": true,
             "lesson": "22 lessons",
-            "price": "$22,69"
+            "price": "$22,69",
+            "desc": "In this course you will learn how to build a space to a 3-dimensional product.There are 24 premium learning videos for you."
+
         },
         {
             "id": "3",
             "image": require('../img/aw3.png'),
-            "desc": "3D Abstract Design",
+            "course": "3D Abstract Design",
             "star": "4.5",
             "isFav": false,
             "lesson": "18 lessons",
-            "price": "$30,50"
+            "price": "$30,50",
+            "desc": "In this course you will learn how to build a space to a 3-dimensional product.There are 24 premium learning videos for you."
+
         },
         {
             "id": "4",
             "image": require('../img/aw4.png'),
-            "desc": "Product Design",
+            "course": "Product Design",
             "star": "4.8",
             "isFav": false,
             "lesson": "23 lessons",
-            "price": "$25,99"
+            "price": "$25,99",
+            "desc": "In this course you will learn how to build a space to a 3-dimensional product.There are 24 premium learning videos for you."
+
         },
         {
             "id": "5",
             "image": require('../img/aw5.png'),
-            "desc": "Game Design",
+            "course": "Game Design",
             "star": "4.9",
             "isFav": false,
             "lesson": "25 lessons",
-            "price": "$12,69"
+            "price": "$12,69",
+            "desc": "In this course you will learn how to build a space to a 3-dimensional product.There are 24 premium learning videos for you."
+
         }
     ]
 
@@ -97,7 +106,11 @@ const Awesome = (props) => {
 
                             <Image source={(item.image)} w="60" h="60" ml="5" />
                             <VStack ml="3" w="200">
-                                <Text fontSize="18" fontWeight={'semibold'}>{item.desc}</Text>
+                                <Pressable onPress={() => navigation.navigate('coursedetail', { paramKey: item })}>
+                                    <Text fontSize="18" fontWeight={'semibold'}>
+                                        {item.course}
+                                    </Text>
+                                </Pressable>
                                 <Text color={'gray.600'} fontSize={"10"}>{item.lesson}</Text>
                                 <HStack >
                                     <Image source={require('../img/star.png')} w="4" h="4" />
@@ -121,7 +134,7 @@ const Awesome = (props) => {
                 )} />
             </Box>
 
-            <Box mt="10" mx="4">
+            <Box my="10" mx="4">
                 <Footer />
             </Box>
         </Box>
