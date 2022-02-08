@@ -1,11 +1,12 @@
 import React from 'react'
 import { Box, HStack, Pressable, Image } from 'native-base'
 
-const Footer = () => {
+const Footer = (props) => {
+
     return (
         <Box flex={.2}>
             <HStack justifyContent={'space-around'}>
-                <Pressable onPress={() => navigation.navigate('home')}>
+                <Pressable onPress={() => props.navigation.navigate('home')}>
                     <Box w="20" h="9">
                         <Image
                             w="100%"

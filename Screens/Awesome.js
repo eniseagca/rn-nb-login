@@ -104,7 +104,7 @@ const Awesome = (props) => {
                     <Box bgColor={'#fff'} pt="3" mb="5" ml="5" w="90%" h="90" borderRadius={'20'}>
                         <HStack>
 
-                            <Image source={(item.image)} w="60" h="60" ml="5" />
+                            <Image source={(item.image)} w="60" h="60" ml="5" alt="img" />
                             <VStack ml="3" w="200">
                                 <Pressable onPress={() => navigation.navigate('coursedetail', { paramKey: item })}>
                                     <Text fontSize="18" fontWeight={'semibold'}>
@@ -113,7 +113,7 @@ const Awesome = (props) => {
                                 </Pressable>
                                 <Text color={'gray.600'} fontSize={"10"}>{item.lesson}</Text>
                                 <HStack >
-                                    <Image source={require('../img/star.png')} w="4" h="4" />
+                                    <Image source={require('../img/star.png')} w="4" h="4" alt="star" />
                                     <Text fontSize={'12'} ml="1" >
                                         {item.star}
                                     </Text>
@@ -135,7 +135,7 @@ const Awesome = (props) => {
             </Box>
 
             <Box my="10" mx="4">
-                <Footer />
+                <Footer navigation={navigation} />
             </Box>
         </Box>
     )

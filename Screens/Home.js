@@ -162,7 +162,7 @@ const Home = (props) => {
           />
         </Box>
 
-        <Footer />
+        <Footer navigation={navigation} />
       </Box>
     </Box>
   )

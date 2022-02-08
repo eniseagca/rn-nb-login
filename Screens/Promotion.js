@@ -55,7 +55,7 @@ const Promotion = (props) => {
                 </Box>
             </Box>
             <Box pt="20" >
-                <Footer />
+                <Footer navigation={navigation} />
             </Box>
         </Box>
     )

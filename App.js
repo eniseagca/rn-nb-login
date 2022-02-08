@@ -28,6 +28,7 @@ const App = () => {
           <Stack.Screen name="promotion" component={Promotion} />
           <Stack.Screen name="awesome" component={Awesome} />
           <Stack.Screen name="coursedetail" component={CourseDetail} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

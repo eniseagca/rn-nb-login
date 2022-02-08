@@ -92,7 +92,7 @@ const Notification = (props) => {
           )}
         />
       </Box>
-      <Footer />
+      <Footer navigation={navigation} />
     </Box>
   )
 }
